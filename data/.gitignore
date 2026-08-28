@@ -1,0 +1,6 @@
+# Ignore raw dataset files
+raw/
+
+# Ignore large metadata/manifests (optional, depending on project needs)
+# metadata/*.csv
+# manifests/*.csv
