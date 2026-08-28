@@ -229,29 +229,38 @@ This inventory documents candidate datasets for the Quran Atlas project, categor
 | Field | Value |
 |:---|:---|
 | **dataset_type** | asr_correct |
-| **verification_status** | `APPROVED` |
+| **verification_status** | `NEEDS_REVIEW` |
 | **verified_by** | Agent 2 |
 | **last_verified_date** | 2026-08-29 |
 | **confidence** | High |
 | **source_url** | https://huggingface.co/datasets/Quran-Lab/quranic-asr-benchmark |
 | **original_source_url** | https://huggingface.co/datasets/Quran-Lab/quranic-asr-benchmark |
 | **download_url** | Gated — requires HF access request (auto-gated) |
-| **recordings_count** | 600 (200 per source: everyayah_heldout, qul_alnufais, tlog_holdout) |
+| **recordings_count** | 600 |
 | **reciters_count** | 4+ (3 source collections) |
 | **has_transcriptions** | Yes |
 | **language** | Arabic |
-| **license_name** | Quran-Lab Non-Profit License 1.2 (NPL-1.2) (CORRECTED from NPL-1.1) |
+| **license_name** | Quran-Lab Non-Profit License 1.2 (NPL-1.2) + Upstream Terms |
 | **license_version** | 1.2 |
 | **commercial_use_allowed** | No |
 | **redistribution_allowed** | No |
 | **modification_allowed** | Yes |
 | **ml_training_allowed** | Yes (research/evaluation only) |
 | **attribution_required** | Yes |
-| **access_restrictions** | Gated (auto) — requires: Name, Affiliation, Intended use + checkbox agreeing no redistribution/voice-cloning |
+| **access_restrictions** | Gated (auto) for the benchmark itself; upstream sources have independent terms. |
 | **dataset_size** | ~246 MB |
 | **source_paper** | Quran-Lab / itqan.dev (no separate arXiv paper identified) |
 
-> **VERSION CORRECTED**: Agent 1 listed NPL-1.1. HF API `cardData` explicitly states `"license_name": "quran-lab-npl-1.2"`. Live leaderboard at https://huggingface.co/spaces/Muno459/quranic-asr-leaderboard. Benchmark is designed to be leakage-free (clips verified absent from training data).
+> **COMPOSITION & LAYERED LICENSING**: 
+> This benchmark is a redistribution of 600 clips from three different upstream sources, each with its own licensing terms. The benchmark's wrapper license is NPL-1.2, but the `extra_gated_prompt` mandates users "respect the reciters' and users' rights and the upstream dataset terms".
+> - **everyayah_heldout (200 clips)**: Sourced from `tarteel-ai/everyayah`. Upstream license is CC BY 4.0.
+> - **tlog_holdout (200 clips)**: Sourced from `tarteel-ai/tlog`. Upstream dataset is manually GATED by Tarteel. 
+> - **qul_alnufais (200 clips)**: Sourced from `qul.tarteel.ai`.
+> 
+> **UNRESOLVED GATE APPROVAL**: 
+> It is **NOT EXPLICITLY STATED** in the dataset card whether approval for the Quran-Lab benchmark's own auto-gate automatically grants legal coverage to use the `tlog`-derived portion, or if a researcher must obtain SEPARATE manual approval from Tarteel for `tlog`. The card simply states: "respect each upstream license". Because of this ambiguity, this dataset is marked as `NEEDS_REVIEW` and must not be used beyond narrow internal POC evaluation until Tarteel's explicit approval policy for redistributed `tlog` data is confirmed.
+>
+> **VERSION CORRECTED**: HF API `cardData` explicitly states `"license_name": "quran-lab-npl-1.2"`.
 
 ---
 
